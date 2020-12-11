@@ -29,7 +29,7 @@ As of _DEC 11 2020_
     -For Decision Trees (criterion = entropy, max_depth = 3, max_features = None)
     
     -For Random Classifier (criterion = entropy, max_depth = 4, n_estimators = 60)
-  - Need to add rest days between games for the team - Morgan
+  - ~~Need to add rest days between games for the team - Morgan~~
   - Load only columns we need for model - Morgan
   - Sanity read through the paper again - Morgan
   
