@@ -14,6 +14,24 @@ To-Do as of _Dec. 10th 2020_
   
 - One note I wanted to make is in regards to our discussion today on whether it would make more sense to predict the score because we want our model to realize that the better team should beat the lesser team by a larger margin then teams that stack up more evenly. After thinking about it more today, I don't think that would be a good idea since that part of baseball is very unpredictable. A lot of times if a team gets up by a larger amount of runs, another team can kind of throw the game making the margin larger when it reality it shouldn't be. This is just one example of the unpredicatbility of baseball scores. I think a better way to approach this and possibly a feature we could include would be looking into the record of the two teams playing each other. For example, the Yankees (NYY) and the Rockies (COL) are playing eachother. Of the times they've played this year their record is 4-1 (4 wins for the NYY). This information would prove more useful, and I feel would give a better measure of who the better team actually is.
 
+
+## Check List
+As of _DEC 11 2020_
+- To Run previous Model
+  - Make sure that a majority of the keys match up with what is in the dataset - Dr. Savala
+  - Load previous year pitching data into mlb_games_df - Dr.Savala
+  - Find or calculate WHIP for teams per year- Dr.Savala
+  - Look through paper and identify the hyperparameters used in model - Morgan Allen
+  - Need to add rest days between games for the team - Morgan Allen
+  - Load only columns we need for model - Morgan Allen
+  - Sanity read through the paper again - Morgan
+  
+- For Our Model
+  - Load in features to dataset (Pitching Data from previous starts, avg home attendance, team rank)
+  - Pull in ERA, WHIP from previous starts as well as team fielding percentage 
+  
+
+
 ## Paul updates
 - _Dec 10, 2020_ - Today I mainly worked on getting together pitcher data to make future analysis/wrangling easier. My work can be found in `Notebooks/pitcher_summary.ipynb`. The highlights are:
     - Summaries of all pitchers, including names, seasons played, teams played for, and all their foreign keys for baseball reference, statscast, etc. (fetching all foreign keys in still in progress).
