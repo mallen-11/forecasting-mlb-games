@@ -21,6 +21,7 @@ As of _DEC 11 2020_
   - Make sure that a majority of the keys match up with what is in the dataset - Dr. Savala
   - Load previous year pitching data into mlb_games_df - Dr.Savala
   - Find or calculate WHIP for teams per year- Dr.Savala
+  - Fix rank for team data in team stats- Dr.Savala
   - Look through paper and identify the hyperparameters used in model - Morgan Allen
   - Need to add rest days between games for the team - Morgan Allen
   - Load only columns we need for model - Morgan Allen
