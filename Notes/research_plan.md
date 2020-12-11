@@ -1,6 +1,6 @@
 # Research Plan
 
-To-Do as of Dec. 10th 2020
+To-Do as of _Dec. 10th 2020_
 
 - Work on gathering data used in https://github.com/andrew-cui/mlb-game-prediction as well as try out the models used in that repo to make sure that they are valid.
 - Need to add some more features to data
@@ -10,6 +10,9 @@ To-Do as of Dec. 10th 2020
   - Team Ranking from previous year (could be from their W-L record or statcast has a rank column)
   - Bring in the data from the month the game was played (This should already be in there and we just need to not remove it)
   - Need to bring a feature in to measure errors (either team fielding percentage or errors/9 would work)
+  
+  
+- One note I wanted to make is in regards to our discussion today on whether it would make more sense to predict the score because we want our model to realize that the better team should beat the lesser team by a larger margin then teams that stack up more evenly. After thinking about it more today, I don't think that would be a good idea since that part of baseball is very unpredictable. A lot of times if a team gets up by a larger amount of runs, another team can kind of throw the game making the margin larger when it reality it shouldn't be. This is just one example of the unpredicatbility of baseball scores. I think a better way to approach this and possibly a feature we could include would be looking into the record of the two teams playing each other. For example, the Yankees (NYY) and the Rockies (COL) are playing eachother. Of the times they've played this year their record is 4-1 (4 wins for the NYY). This information would prove more useful, and I feel would give a better measure of who the better team actually is.
 
 ## Paul updates
 - _Dec 10, 2020_ - Today I mainly worked on getting together pitcher data to make future analysis/wrangling easier. My work can be found in `Notebooks/New features.ipynb`. The highlights are:
@@ -18,3 +21,6 @@ To-Do as of Dec. 10th 2020
     - While I didn't specifically set aside home attendance, this is included in the game-level data, so it will be easy to get.
     - Same note for "team ranking from previous year"
 As far as the pitcher game-level data goes, my plan is to save a CSV file for each pitcher which includes stats for every game. So it will have rows corresponding to games played, and columns for each metric we're interested in. Then I'll write some helper functions to easily load these. Hopefully that will avoid us needing to load one giant file of all games for all pitchers.
+
+## Morgan updates
+- _Dec 10, 2020_ - Today I was able to remake all of the hitting stats game to game that will be needed to test the accuracy of the predicictions of the main paper we are focusing on. The mlb_games_df.csv now contains every regular season game from 2000-2019. In it there is the date, team names, pitcher names, ELO, AVG, SLG, ISO, and OBP for both home and away teams for every game. There is also difference and percent difference columns included by subtracting home minus away for each stat. Lastly, I also included splitting the date into each of its parts into their own columns. Some challenges in this data is that pitcher name for home and away is sometimes written as their identifier and sometimes written as their actual name. We might need to scrap those columns and start from scratch using the pitching data Dr. Savala made. Going forward, I will be finishing off the pitcher statistics using previous years data and then running it through some models to check and validate the accuracy shown in our papers.
