@@ -22,7 +22,7 @@ As of _DEC 11 2020_
   - Load previous year pitching data into mlb_games_df - Dr. Savala
   - Find or calculate WHIP for teams per year- Dr. Savala
   - Fix rank for team data in team stats- Dr. Savala
-  - Look through paper and identify the hyperparameters used in model - Morgan
+  - ~~Look through paper and identify the hyperparameters used in model - Morgan~~
   
     -For XGBoost (max_depth = 3, learning_rate = 0.05, n_estimators = 300)
     
