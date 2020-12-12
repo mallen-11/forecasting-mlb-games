@@ -32,7 +32,7 @@ As of _DEC 11 2020_
     - Need to remove 30 games that started but didn't finish
   
 - For Our Model
-  - Load in features to dataset (Pitching Data from previous starts, avg home attendance, team rank)
+  - Load in features to dataset (Pitching Data from previous starts, avg home attendance, team rank, WAR)
   - Pull in ERA, WHIP from previous starts as well as team fielding percentage 
   - We will need to redo hyperparamter searching specifically using a lot more options compared to study
   
