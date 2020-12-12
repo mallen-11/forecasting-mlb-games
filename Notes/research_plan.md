@@ -33,6 +33,8 @@ As of _DEC 11 2020_
   - Load only columns we need for model - Morgan
   - Sanity read through the paper again - Morgan
   
+   - Need to remove 30 games that started but didn't finish
+  
 - For Our Model
   - Load in features to dataset (Pitching Data from previous starts, avg home attendance, team rank)
   - Pull in ERA, WHIP from previous starts as well as team fielding percentage 
