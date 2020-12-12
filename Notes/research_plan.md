@@ -16,20 +16,22 @@ To-Do as of _Dec. 10th 2020_
 
 
 ## Check List
-As of _DEC 11 2020_
+As of _Dec 11 2020_
 - To run previous Model
   - Make sure that a majority of the keys match up with what is in the dataset - Dr. Savala
-  - Load previous year pitching data into mlb_games_df - Dr. Savala
+  - Load previous year pitching data for each starter into mlb_games_df (Needs to be based on starting pitchers) - Dr. Savala
   - ~Find or calculate WHIP for teams per year - Dr. Savala~
   - Fix rank for team data in team stats - Dr. Savala
-  - ~~Look through paper and identify the hyperparameters used in model - Morgan~~
+  - ~Look through paper and identify the hyperparameters used in model - Morgan~
     - For XGBoost (max_depth = 3, learning_rate = 0.05, n_estimators = 300)
     - For Decision Trees (criterion = entropy, max_depth = 3, max_features = None)
     - For Random Classifier (criterion = entropy, max_depth = 4, n_estimators = 60)
-  - ~~Need to add rest days between games for the team - Morgan~~
+  - ~Need to add rest days between games for the team - Morgan~
   - Load only columns we need for model - Morgan
-  - Sanity read through the paper again - Morgan
+  - ~Sanity read through the paper again - Morgan~
     - Need to remove 30 games that started but didn't finish
+    - On Page 34, do we need to normalize the differences or is that already done? (This might be where the whole scaling vs unscaling thing comes in and they say at the end that unscaling works better)
+  - Put together a notebook for splitting the data into training and testing data based on year - Morgan
   
 - For Our Model
   - Create a function which takes in a team name and returns the correct abbreviation. Right now I feel like I'm always guessing what abbreviation to use
@@ -49,4 +51,5 @@ As of _DEC 11 2020_
 As far as the pitcher game-level data goes, my plan is to save a CSV file for each pitcher which includes stats for every game. So it will have rows corresponding to games played, and columns for each metric we're interested in. Then I'll write some helper functions to easily load these. Hopefully that will avoid us needing to load one giant file of all games for all pitchers.
 
 ## Morgan updates
+- _Dec 11, 2020_ - I worked on building out the rest of the data from the previous study. Specifically, I worked on gaining access to the pitching data from the previous year (Dr. Savala will now add in aggregate pitching data for each game based on the starting pitchers). I also worked on adding in who won each game and added in the amount of rest days between each game. Dr. Savala and I updated the check list to be clear on what we need to accomplish to go onto the next steps.
 - _Dec 10, 2020_ - Today I was able to remake all of the hitting stats game to game that will be needed to test the accuracy of the predicictions of the main paper we are focusing on. The mlb_games_df.csv now contains every regular season game from 2000-2019. In it there is the date, team names, pitcher names, ELO, AVG, SLG, ISO, and OBP for both home and away teams for every game. There is also difference and percent difference columns included by subtracting home minus away for each stat. Lastly, I also included splitting the date into each of its parts into their own columns. Some challenges in this data is that pitcher name for home and away is sometimes written as their identifier and sometimes written as their actual name. We might need to scrap those columns and start from scratch using the pitching data Dr. Savala made. Going forward, I will be finishing off the pitcher statistics using previous years data and then running it through some models to check and validate the accuracy shown in our papers.
