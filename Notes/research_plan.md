@@ -23,17 +23,13 @@ As of _DEC 11 2020_
   - Find or calculate WHIP for teams per year- Dr. Savala
   - Fix rank for team data in team stats- Dr. Savala
   - ~~Look through paper and identify the hyperparameters used in model - Morgan~~
-  
-    -For XGBoost (max_depth = 3, learning_rate = 0.05, n_estimators = 300)
-    
-    -For Decision Trees (criterion = entropy, max_depth = 3, max_features = None)
-    
-    -For Random Classifier (criterion = entropy, max_depth = 4, n_estimators = 60)
+    - For XGBoost (max_depth = 3, learning_rate = 0.05, n_estimators = 300)
+    - For Decision Trees (criterion = entropy, max_depth = 3, max_features = None)
+    - For Random Classifier (criterion = entropy, max_depth = 4, n_estimators = 60)
   - ~~Need to add rest days between games for the team - Morgan~~
   - Load only columns we need for model - Morgan
   - Sanity read through the paper again - Morgan
-  
-   - Need to remove 30 games that started but didn't finish
+    - Need to remove 30 games that started but didn't finish
   
 - For Our Model
   - Load in features to dataset (Pitching Data from previous starts, avg home attendance, team rank)
