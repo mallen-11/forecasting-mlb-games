@@ -17,11 +17,11 @@ To-Do as of _Dec. 10th 2020_
 
 ## Check List
 As of _DEC 11 2020_
-- To Run previous Model
+- To run previous Model
   - Make sure that a majority of the keys match up with what is in the dataset - Dr. Savala
   - Load previous year pitching data into mlb_games_df - Dr. Savala
-  - Find or calculate WHIP for teams per year- Dr. Savala
-  - Fix rank for team data in team stats- Dr. Savala
+  - ~Find or calculate WHIP for teams per year - Dr. Savala~
+  - Fix rank for team data in team stats - Dr. Savala
   - ~~Look through paper and identify the hyperparameters used in model - Morgan~~
     - For XGBoost (max_depth = 3, learning_rate = 0.05, n_estimators = 300)
     - For Decision Trees (criterion = entropy, max_depth = 3, max_features = None)
@@ -32,6 +32,7 @@ As of _DEC 11 2020_
     - Need to remove 30 games that started but didn't finish
   
 - For Our Model
+  - Create a function which takes in a team name and returns the correct abbreviation. Right now I feel like I'm always guessing what abbreviation to use
   - Load in features to dataset (Pitching Data from previous starts, avg home attendance, team rank, WAR)
   - Pull in ERA, WHIP from previous starts as well as team fielding percentage 
   - We will need to redo hyperparamter searching specifically using a lot more options compared to study
@@ -39,6 +40,7 @@ As of _DEC 11 2020_
 
 
 ## Paul updates
+- _Dec 11, 2020_ - Mainly worked on getting foreign keys for all pitchers, as well as game-level stats. Game-level stats are processing as I write this, so tomorrow I should be able to upload those (assuming there's no issues). I also calculated WHIP on a team-level and uploaded a file with that and other stats to the data folder. 
 - _Dec 10, 2020_ - Today I mainly worked on getting together pitcher data to make future analysis/wrangling easier. My work can be found in `Notebooks/pitcher_summary.ipynb`. The highlights are:
     - Summaries of all pitchers, including names, seasons played, teams played for, and all their foreign keys for baseball reference, statscast, etc. (fetching all foreign keys in still in progress).
     - Game-level stats for pitchers. I modified code from `pybaseball` to scrape baseball reference (BR) for pitcher data. Note that this _does not_ include WHIP, but _does_ include ERA. So we'll either need to calculate WHIP by hand (it's not obvious to me that the columns included make it simple to do so), or use an alternative measure.
