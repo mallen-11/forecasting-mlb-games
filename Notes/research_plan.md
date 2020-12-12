@@ -16,7 +16,7 @@ To-Do as of _Dec. 10th 2020_
 
 
 ## Check List
-As of _DEC 11 2020_
+As of _Dec 11 2020_
 - To run previous Model
   - Make sure that a majority of the keys match up with what is in the dataset - Dr. Savala
   - Load previous year pitching data for each starter into mlb_games_df (Needs to be based on starting pitchers) - Dr. Savala
@@ -28,8 +28,9 @@ As of _DEC 11 2020_
     - For Random Classifier (criterion = entropy, max_depth = 4, n_estimators = 60)
   - ~Need to add rest days between games for the team - Morgan~
   - Load only columns we need for model - Morgan
-  - Sanity read through the paper again - Morgan
+  - ~Sanity read through the paper again - Morgan~
     - Need to remove 30 games that started but didn't finish
+    - On Page 34, do we need to normalize the differences or is that already done?
   - Put together a notebook for splitting the data into training and testing data based on year - Morgan
   
 - For Our Model
