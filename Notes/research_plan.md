@@ -29,7 +29,10 @@ As of _Dec 11 2020_
   - ~Need to add rest days between games for the team - Morgan~
   - Load only columns we need for model - Morgan
   - ~Sanity read through the paper again - Morgan~
-    - Need to remove 30 games that started but didn't finish
+    - We have 46159 games while they had 46129. Hard to tell where we are missing. Need to drop double headers
+    
+      - Need to figure out if we want playoff games or not (Doesn't say in the paper)
+      
     - On Page 34, do we need to normalize the differences or is that already done? (This might be where the whole scaling vs unscaling thing comes in and they say at the end that unscaling works better)
   - Put together a notebook for splitting the data into training and testing data based on year - Morgan
   
