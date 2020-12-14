@@ -18,10 +18,9 @@ To-Do as of _Dec. 10th 2020_
 ## Check List
 As of _Dec 11 2020_
 - To run previous Model
-  - Make sure that a majority of the keys match up with what is in the dataset - Dr. Savala
+  - ~Make sure that a majority of the keys match up with what is in the dataset - Dr. Savala~
   - Load previous year pitching data for each starter into mlb_games_df (Needs to be based on starting pitchers) - Dr. Savala
   - ~Find or calculate WHIP for teams per year - Dr. Savala~
-  - Fix rank for team data in team stats - Dr. Savala
   - ~Look through paper and identify the hyperparameters used in model - Morgan~
     - For XGBoost (max_depth = 3, learning_rate = 0.05, n_estimators = 300)
     - For Decision Trees (criterion = entropy, max_depth = 3, max_features = None)
@@ -37,6 +36,7 @@ As of _Dec 11 2020_
   - Put together a notebook for splitting the data into training and testing data based on year - Morgan
   
 - For Our Model
+  - Fix rank for team data in team stats - Dr. Savala
   - Create a function which takes in a team name and returns the correct abbreviation. Right now I feel like I'm always guessing what abbreviation to use
   - Load in features to dataset (Pitching Data from previous starts, avg home attendance, team rank, WAR)
   - Pull in ERA, WHIP from previous starts as well as team fielding percentage 
