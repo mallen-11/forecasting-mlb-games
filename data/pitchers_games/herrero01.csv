@@ -1,3 +1,3 @@
-Gcar,Gtm,Date,Tm,Opp,Inngs,Dec,DR,IP,H,R,ER,BB,SO,HR,HBP,ERA,BF,Pit,Str,StL,StS,GB,FB,LD,PU,Unk,GSc,IR,IS,SB,CS,PO,AB,2B,3B,IBB,GDP,SF,ROE,aLI,WPA,acLI,cWPA,RE24,Entered,Exited,Double_Header,Home_Tm,WHIP,Result,Tm_Score,Opp_Score
-1,63,2017-06-14,NYY,LAA,7-GF(8),L(0-1),99,2.0,2,2,2,1,2,1,1,9.00,10,29,17,4,3,3,3,2,0,0,,0,0,1,0,0,8,0,0,0,0,0,0,.69,-0.260,.92,-0.21%,-0.98,7b --- 0 out tie,8b end d 2,,LAA,1.5,L,5,7
-2,77,2017-06-29,NYY,CHW,6-6,,14,1.0,1,0,0,0,1,0,0,6.00,4,16,10,0,1,3,0,0,0,0,,0,0,0,0,0,4,0,0,0,0,0,0,.84,0.048,1.23,0.04%,0.51,6b --- 0 out d1,6b 3 out d1,,CHW,1.0,L,3,4
+,Gcar,Gtm,Date,Tm,Opp,Inngs,Dec,DR,IP,H,R,ER,BB,SO,HR,HBP,ERA,BF,Pit,Str,StL,StS,GB,FB,LD,PU,Unk,GSc,IR,IS,SB,CS,PO,AB,2B,3B,IBB,GDP,SF,ROE,aLI,WPA,acLI,cWPA,RE24,Entered,Exited,Double_Header,Home_Tm,WHIP,Result,Tm_Score,Opp_Score
+0,1,63,2017-06-14,NYA,LAA,7-GF(8),L(0-1),99,2.0,2,2,2,1,2,1,1,9.0,10,29,17,4,3,3,3,2,0,0,,0,0,1,0,0,8,0,0,0,0,0,0,0.69,-0.26,0.92,-0.21%,-0.98,7b --- 0 out tie,8b end d 2,,LAA,1.5,L,5,7
+1,2,77,2017-06-29,NYA,CHW,6-6,,14,1.0,1,0,0,0,1,0,0,6.0,4,16,10,0,1,3,0,0,0,0,,0,0,0,0,0,4,0,0,0,0,0,0,0.84,0.048,1.23,0.04%,0.51,6b --- 0 out d1,6b 3 out d1,,CHW,1.0,L,3,4

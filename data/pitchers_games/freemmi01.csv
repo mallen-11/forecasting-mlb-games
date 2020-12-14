@@ -1,3 +1,3 @@
-Gcar,Gtm,Date,Tm,Opp,Inngs,Dec,DR,IP,H,R,ER,BB,SO,HR,HBP,ERA,BF,Pit,Str,StL,StS,GB,FB,LD,PU,Unk,GSc,IR,IS,SB,CS,PO,AB,2B,3B,IBB,GDP,SF,ROE,aLI,WPA,acLI,cWPA,RE24,Entered,Exited,Double_Header,Home_Tm,WHIP,Result,Tm_Score,Opp_Score,DFS(DK),DFS(FD)
-1,44,2017-05-20,SEA,CHW,9-GF,,99,1.0,3,1,1,0,0,0,0,9.00,6,22,14,2,3,2,4,2,0,0,,0,0,0,0,0,5,0,0,0,0,1,0,.00,0.000,.00,0.00%,-0.50,9t --- 0 out d14,9t end d15,,SEA,3.0,L,1,16,,
-2,82,2019-06-29,CLE,BAL,7-GF(8),,99,2.0,2,2,2,0,0,1,0,9.00,8,23,15,4,1,4,4,1,0,0,,0,0,0,0,0,8,1,0,0,0,0,0,.00,0.000,.00,0.00%,-0.91,7b --- 0 out d11,8b end d13,,BAL,1.0,L,0,13,-0.70,0.00
+,Gcar,Gtm,Date,Tm,Opp,Inngs,Dec,DR,IP,H,R,ER,BB,SO,HR,HBP,ERA,BF,Pit,Str,StL,StS,GB,FB,LD,PU,Unk,GSc,IR,IS,SB,CS,PO,AB,2B,3B,IBB,GDP,SF,ROE,aLI,WPA,acLI,cWPA,RE24,Entered,Exited,Double_Header,Home_Tm,WHIP,Result,Tm_Score,Opp_Score,DFS(DK),DFS(FD)
+0,1,44,2017-05-20,SEA,CHW,9-GF,,99,1.0,3,1,1,0,0,0,0,9.0,6,22,14,2,3,2,4,2,0,0,,0,0,0,0,0,5,0,0,0,0,1,0,0.0,0.0,0.0,0.00%,-0.5,9t --- 0 out d14,9t end d15,,SEA,3.0,L,1,16,,
+1,2,82,2019-06-29,CLE,BAL,7-GF(8),,99,2.0,2,2,2,0,0,1,0,9.0,8,23,15,4,1,4,4,1,0,0,,0,0,0,0,0,8,1,0,0,0,0,0,0.0,0.0,0.0,0.00%,-0.91,7b --- 0 out d11,8b end d13,,BAL,1.0,L,0,13,-0.7,0.0

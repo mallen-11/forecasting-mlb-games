@@ -1,3 +1,3 @@
-Gcar,Gtm,Date,Tm,Opp,Inngs,Dec,DR,IP,H,R,ER,BB,SO,HR,HBP,ERA,BF,Pit,Str,StL,StS,GB,FB,LD,PU,Unk,GSc,IR,IS,SB,CS,PO,AB,2B,3B,IBB,GDP,SF,ROE,aLI,WPA,acLI,cWPA,RE24,Entered,Exited,Double_Header,Home_Tm,WHIP,Result,Tm_Score,Opp_Score,DFS(DK),DFS(FD)
-1,28,2012-05-06,BAL,BOS,16-GF(17),W(1-0),99,2.0,2,0,0,1,2,0,0,0.00,8,23,15,6,2,2,3,2,0,0,,0,0,0,0,0,7,1,0,0,1,0,1,2.11,0.183,2.65,0.14%,1.03,16b --- 0 out tie,17b end a 3,,BOS,1.5,W,9,6,,
-2,22,2019-04-20,BAL,MIN,9-GF,,99,1.0,2,1,1,0,1,1,0,9.00,5,22,16,1,1,1,3,2,0,0,,0,0,0,0,0,5,1,0,0,0,0,0,.00,0.000,.00,0.00%,-0.45,9t --- 0 out d8,9t end d 9,2,BAL,2.0,L,7,16,1.05,3.00
+,Gcar,Gtm,Date,Tm,Opp,Inngs,Dec,DR,IP,H,R,ER,BB,SO,HR,HBP,ERA,BF,Pit,Str,StL,StS,GB,FB,LD,PU,Unk,GSc,IR,IS,SB,CS,PO,AB,2B,3B,IBB,GDP,SF,ROE,aLI,WPA,acLI,cWPA,RE24,Entered,Exited,Double_Header,Home_Tm,WHIP,Result,Tm_Score,Opp_Score,DFS(DK),DFS(FD)
+0,1,28,2012-05-06,BAL,BOS,16-GF(17),W(1-0),99,2.0,2,0,0,1,2,0,0,0.0,8,23,15,6,2,2,3,2,0,0,,0,0,0,0,0,7,1,0,0,1,0,1,2.11,0.183,2.65,0.14%,1.03,16b --- 0 out tie,17b end a 3,,BOS,1.5,W,9,6,,
+1,2,22,2019-04-20,BAL,MIN,9-GF,,99,1.0,2,1,1,0,1,1,0,9.0,5,22,16,1,1,1,3,2,0,0,,0,0,0,0,0,5,1,0,0,0,0,0,0.0,0.0,0.0,0.00%,-0.45,9t --- 0 out d8,9t end d 9,2.0,BAL,2.0,L,7,16,1.05,3.0

@@ -1,4 +1,4 @@
-Gcar,Gtm,Date,Tm,Opp,Inngs,Dec,DR,IP,H,R,ER,BB,SO,HR,HBP,ERA,BF,Pit,Str,StL,StS,GB,FB,LD,PU,Unk,GSc,IR,IS,SB,CS,PO,AB,2B,3B,IBB,GDP,SF,ROE,aLI,WPA,acLI,cWPA,RE24,Entered,Exited,Double_Header,Home_Tm,WHIP,Result,Tm_Score,Opp_Score
-1,9,2008-04-09,OAK,TOR,8-8,W(1-0),99,1.0,0,0,0,2,1,0,0,0.00,5,26,15,6,2,1,1,0,0,0,,0,0,0,0,0,3,0,0,0,0,0,0,.57,0.032,.58,0.02%,0.52,8b --- 0 out d1,8b 3 out d1,,TOR,2.0,W,6,3
-2,11,2008-04-11,OAK,CLE,8-8,,1,0.0,0,2,2,1,0,0,1,18.00,2,7,1,1,0,0,0,0,0,0,,2,1,0,0,0,0,0,0,0,0,0,0,.40,-0.027,.44,-0.02%,-1.17,8b -23 2 out a6,8b 123 2 out a5,,CLE,inf,W,9,7
-3,13,2008-04-13,OAK,CLE,7-GF(8),,1,2.0,4,4,4,2,1,0,0,18.00,12,48,27,6,1,2,7,3,0,0,,0,0,0,0,0,10,1,0,0,0,0,0,.36,-0.034,.41,-0.02%,-2.96,7b --- 0 out d2,8b end d 6,,CLE,3.0,L,1,7
+,Gcar,Gtm,Date,Tm,Opp,Inngs,Dec,DR,IP,H,R,ER,BB,SO,HR,HBP,ERA,BF,Pit,Str,StL,StS,GB,FB,LD,PU,Unk,GSc,IR,IS,SB,CS,PO,AB,2B,3B,IBB,GDP,SF,ROE,aLI,WPA,acLI,cWPA,RE24,Entered,Exited,Double_Header,Home_Tm,WHIP,Result,Tm_Score,Opp_Score
+0,1,9,2008-04-09,OAK,TOR,8-8,W(1-0),99,1.0,0,0,0,2,1,0,0,0.0,5,26,15,6,2,1,1,0,0,0,,0,0,0,0,0,3,0,0,0,0,0,0,0.57,0.032,0.58,0.02%,0.52,8b --- 0 out d1,8b 3 out d1,,TOR,2.0,W,6,3
+1,2,11,2008-04-11,OAK,CLE,8-8,,1,0.0,0,2,2,1,0,0,1,18.0,2,7,1,1,0,0,0,0,0,0,,2,1,0,0,0,0,0,0,0,0,0,0,0.4,-0.027000000000000003,0.44,-0.02%,-1.17,8b -23 2 out a6,8b 123 2 out a5,,CLE,inf,W,9,7
+2,3,13,2008-04-13,OAK,CLE,7-GF(8),,1,2.0,4,4,4,2,1,0,0,18.0,12,48,27,6,1,2,7,3,0,0,,0,0,0,0,0,10,1,0,0,0,0,0,0.36,-0.034,0.41,-0.02%,-2.96,7b --- 0 out d2,8b end d 6,,CLE,3.0,L,1,7
