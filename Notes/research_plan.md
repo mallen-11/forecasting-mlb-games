@@ -37,7 +37,7 @@ As of _Dec 11 2020_
   
 - For Our Model
   - Fix rank for team data in team stats - Dr. Savala
-  - Create a function which takes in a team name and returns the correct abbreviation. Right now I feel like I'm always guessing what abbreviation to use
+  - ~Create a function which takes in a team name and returns the correct abbreviation. Right now I feel like I'm always guessing what abbreviation to use - Morgan~
   - Load in features to dataset (Pitching Data from previous starts, avg home attendance, team rank, WAR)
   - Pull in ERA, WHIP from previous starts as well as team fielding percentage 
   - We will need to redo hyperparamter searching specifically using a lot more options compared to study
