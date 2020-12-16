@@ -168,10 +168,11 @@ class Dataset:
                 # one they're currently playing. If so, null-out the stats.
                 if game_df.shape[0] == 1:
                     game_df[cols] = None
-                game_df = game_df.sort_values('Date', ascending=False)
-                # Minus 1 for zero-indexing (so game_offset=1 means grab the 0'th row), and another minus 1
-                # because we don't want to select the current game (which is always the head).
-                game_df = game_df.iloc[[game_offset-2]]
+                else:
+                    # If there is more than one game, remove the current one to only look at past ones
+                    game_df = game_df[game_df['Date'] < game_df['date']]
+                    game_df = game_df.sort_values('Date', ascending=False)
+                    game_df = game_df.iloc[[game_offset-1]]
                 if processed_df is None:
                     processed_df = game_df
                 else:
