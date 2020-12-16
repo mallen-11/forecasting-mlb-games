@@ -189,6 +189,7 @@ class Dataset:
     
     def save(self):
         self.data.to_csv(f'../data/saved_datasets/{self.name}.csv', index=False)
-    
+
     def load(self):
         self.data = pd.read_csv(f'../data/saved_datasets/{self.name}.csv')
+        self.data = optimize(self.data)
