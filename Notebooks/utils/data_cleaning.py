@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 
 
 def downcast(df, show_reduction=False):
@@ -33,4 +34,34 @@ def downcast(df, show_reduction=False):
         reduced_mem_usage = sum(df.memory_usage() / 10**6)
         reduced_mem_usage_pct = 100 * (1 - reduced_mem_usage / original_mem_usage)
         print(f'{original_mem_usage:.2f}MB -> {reduced_mem_usage:.2f}MB ({reduced_mem_usage_pct:.2f}% reduction)')
+    return df
+
+
+def to_datetime(df):
+    cols = list(df.columns)
+    date_cols = [c for c in cols if 'date' in c.lower()]
+    for c in date_cols:
+        try:
+            df[c] = pd.to_datetime(df[c])
+        except ValueError:
+            pass
+    return df
+
+
+def to_numeric(df):
+    cols = list(df.columns)
+    date_cols = [c for c in cols if 'date' in c.lower()]
+    cols = list(set(cols) - set(date_cols))
+    for c in cols:
+        try:
+            df[c] = pd.to_numeric(df[c])
+        except ValueError:
+            pass
+    return df
+
+
+def optimize(df):
+    df = to_datetime(df)
+    df = to_numeric(df)
+    df = downcast(df)
     return df
