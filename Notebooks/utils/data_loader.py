@@ -20,6 +20,11 @@ class Files:
     # Game-level pitcher stats
     pitchers_games = base_dir / Path('pitchers_games.csv')
     
+class AggFcns:
+    mean_fn = np.mean
+    min_fn = np.min
+    max_fn = np.max
+    
 class Dataset:
     def __init__(self, name):
         self.name = name
@@ -88,7 +93,7 @@ class Dataset:
         self.modified_at = datetime.now()
         return self.data
     
-    def add_team_stats(self, year_offset=1, cols=[]):
+    def add_team_stats(self, year_offset=1, cols=[], agg=None):
         '''
         Load team statistics (attendance, W-L%, etc.). Note that you can run this more
         than once to join several years of data.
@@ -97,6 +102,11 @@ class Dataset:
             data from 2014 (one year earlier).
         cols (list): (Default []) Columns from team data to include. By default no
             data is included.
+        agg (str): (Default None) If year_offset > 1, then optionally you can aggregate
+            all the years between game - year_offset and game - 1 (e.g. by averaging them). If you
+            wish to do so, supply agg as one of ['mean', 'min', 'max']. Note that if 
+            year_offset > 1 and agg == None, then only that single year will be returned (i.e.
+            no aggregation is performed).
         '''
         assert self.data is not None, 'First run Dataset.load_games() to load some games into memory'
         if isinstance(cols, str):
@@ -106,19 +116,41 @@ class Dataset:
         
         # Append columns for the home team
         self.data = self.data.merge(teams_df[['Team', 'Year'] + cols], left_on='home_team', right_on='Team')
-        self.data = self.data[self.data['Y'] - year_offset == self.data['Year']]
-        self.data = self.data.drop(['Team', 'Year'], axis='columns')
+        if agg is None:
+            self.data = self.data[self.data['Y'] - year_offset == self.data['Year']]
+        else:
+            agg_fn = getattr(AggFcns, f'{agg}_fn')
+            self.data = self.data[self.data['Year'].between(self.data['Y']-year_offset, self.data['Y']-1)]
+            self.data = self.data.groupby(['date', 'home_team', 'away_team']).agg(agg_fn)
+            self.data = self.data.reset_index()
+           
+        cols_to_drop = set(['Team', 'Year']).intersection(set(self.data.columns))
+        cols_to_drop = list(cols_to_drop)
+        self.data = self.data.drop(cols_to_drop, axis='columns')
         all_cols = list(self.data.columns)
-        all_cols[-len(cols):] = [f'home_{c}_offset{np.abs(year_offset)}year' for c in all_cols[-len(cols):]]
+        if agg is None:
+            all_cols[-len(cols):] = [f'home_{c}_offset{np.abs(year_offset)}year' for c in all_cols[-len(cols):]]
+        else:
+            all_cols[-len(cols):] = [f'home_{c}_offset{np.abs(year_offset)}year_{agg}' for c in all_cols[-len(cols):]]
         self.data.columns = all_cols
         self.data = self._downcast(self.data)
         
         # Repeat for away team
         self.data = self.data.merge(teams_df[['Team', 'Year'] + cols], left_on='away_team', right_on='Team')
-        self.data = self.data[self.data['Y'] - year_offset == self.data['Year']]
-        self.data = self.data.drop(['Team', 'Year'], axis='columns')
+        if agg is None:
+            self.data = self.data[self.data['Y'] - year_offset == self.data['Year']]
+        else:
+            self.data = self.data[self.data['Year'].between(self.data['Y']-year_offset, self.data['Y']-1)]
+            self.data = self.data.groupby(['date', 'home_team', 'away_team']).agg(agg_fn)
+            self.data = self.data.reset_index()
+        cols_to_drop = set(['Team', 'Year']).intersection(set(self.data.columns))
+        cols_to_drop = list(cols_to_drop)
+        self.data = self.data.drop(cols_to_drop, axis='columns')
         all_cols = list(self.data.columns)
-        all_cols[-len(cols):] = [f'away_{c}_offset{np.abs(year_offset)}year' for c in all_cols[-len(cols):]]
+        if agg is None:
+            all_cols[-len(cols):] = [f'away_{c}_offset{np.abs(year_offset)}year' for c in all_cols[-len(cols):]]
+        else:
+            all_cols[-len(cols):] = [f'away_{c}_offset{np.abs(year_offset)}year_{agg}' for c in all_cols[-len(cols):]]
         self.data.columns = all_cols
         self.data = self._downcast(self.data)
         self.modified_at = datetime.now()
