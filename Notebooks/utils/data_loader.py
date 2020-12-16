@@ -34,11 +34,13 @@ class Dataset:
         Load all games between supplied dates.
         start_date (str or date): (Default 2000-01-01) 
         end_date (str or date): (Default 2015-12-31) 
-        cols (list): (Default None) By default include all columns.
+        cols (list): (Default None) By default include all columns. Otherwise, supply a list
+        of columns and those will be included. 
         '''
         games_df = pd.read_csv(Files.games)
         if cols is not None:
             cols = ['date'] + cols
+            cols = list(set(cols))
         else:
             cols = games_df.columns
         games_df = games_df[cols]
@@ -47,6 +49,7 @@ class Dataset:
         games_df['Y'] = games_df['Y'].astype(int)
         self.data = games_df
         self.data = self._downcast(self.data)
+        self.modified_at = datetime.now()
         return self.data
         
     def add_team_pitching_stats(self, year_offset=-1, cols=[]):
@@ -82,6 +85,7 @@ class Dataset:
         all_cols[-len(cols):] = [f'team_away_{c}_offset{np.abs(year_offset)}year' for c in all_cols[-len(cols):]]
         self.data.columns = all_cols
         self.data = self._downcast(self.data)
+        self.modified_at = datetime.now()
         return self.data
     
     def add_team_stats(self, year_offset=1, cols=[]):
@@ -117,7 +121,7 @@ class Dataset:
         all_cols[-len(cols):] = [f'away_{c}_offset{np.abs(year_offset)}year' for c in all_cols[-len(cols):]]
         self.data.columns = all_cols
         self.data = self._downcast(self.data)
-        
+        self.modified_at = datetime.now()
         return self.data
     
     def add_pitcher_stats(self, game_offset=1, cols=[]):
@@ -195,7 +199,7 @@ class Dataset:
         all_cols[-len(cols):] = [f'pitcher_away_{c}_offset{np.abs(game_offset)}game' for c in all_cols[-len(cols):]]
         self.data.columns = all_cols
         self.data = self._downcast(self.data)
-        
+        self.modified_at = datetime.now()
         return self.data
     
     def _downcast(self, df, show_reduction=False):
