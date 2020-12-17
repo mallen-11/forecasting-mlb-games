@@ -89,10 +89,13 @@ class Dataset:
             assert home_or_away in ['home', 'away'], "home_or_away must be one of ['home', 'away']"
 
             # Append desired stats columns
-            self.data = self.data.merge(right_df[['Team', 'Year'] + cols], left_on=f'{home_or_away}_team', right_on='Team')
+            pre_merge_rows = self.data.shape[0]
+            
             # If aggregating, get multiple years and apply the aggregation function. Otherwise, get just a single year.
             if agg is None:
-                self.data = self.data[self.data['Y'] - year_offset == self.data['Year']]
+                right_df['year_offset'] = right_df['Year'] + year_offset
+                self.data = self.data.merge(right_df[['Team', 'Year', 'year_offset'] + cols], left_on=[f'{home_or_away}_team', 'Y'], right_on=['Team', 'year_offset'], how='left')
+                assert self.data.shape[0] == pre_merge_rows, f'pre-merge rows = {pre_merge_rows}, post-merge rows = {self.data.shape[0]}'
             else:
                 agg_fn = getattr(AggFcns, f'{agg}_fn')
                 self.data = self.data[self.data['Year'].between(self.data['Y'] - year_offset, self.data['Y'] - 1)]
@@ -106,7 +109,7 @@ class Dataset:
                 self.data = self.data.reset_index()
 
             # Get rid of columns that were only used for merging
-            cols_to_drop = set(['Team', 'Year']).intersection(set(self.data.columns))
+            cols_to_drop = set(['Team', 'Year', 'year_offset']).intersection(set(self.data.columns))
             cols_to_drop = list(cols_to_drop)
             self.data = self.data.drop(cols_to_drop, axis='columns')
             all_cols = list(self.data.columns)
@@ -156,30 +159,19 @@ class Dataset:
             pitchers_df['Date'] = pd.to_datetime(pitchers_df['Date'])
             pitchers_df['Year'] = pitchers_df['Date'].dt.year
             pitchers_df = pitchers_df[['name', 'Date', 'Year'] + cols]
-            self.data = self.data.merge(pitchers_df, left_on=[f'{home_or_away}_pitcher', 'Y'],
-                                        right_on=['name', 'Year'], how='left')
-            # Do <= in case it's the pitchers first ever start. If you do < then that row of data
-            # will just be thrown away (not good!)
-            self.data = self.data[self.data['Date'] <= self.data['date']]
 
-            processed_df = None
-            for _, game_df in self.data.groupby([f'{home_or_away}_pitcher', 'date']):
-                # Check if this is the pitchers first start, i.e. only "previous" game is the
-                # one they're currently playing. If so, null-out the stats.
-                if game_df.shape[0] == 1:
-                    game_df[cols] = None
-                else:
-                    # If there is more than one game, remove the current one to only look at past ones
-                    game_df = game_df[game_df['Date'] < game_df['date']]
-                    game_df = game_df.sort_values('Date', ascending=False)
-                    game_df = game_df.iloc[[game_offset-1]]
-                if processed_df is None:
-                    processed_df = game_df
-                else:
-                    processed_df = pd.concat([processed_df, game_df])
+            pitchers_df['season_game'] = pitchers_df.groupby(['name', 'Year'])['Date'].rank('min')
+            pitchers_df[f'season_game_offset{game_offset}'] = pitchers_df['season_game'] + game_offset
+            self.data[f'{home_or_away}_pitcher_season_game'] = self.data.groupby([f'{home_or_away}_pitcher', 'Y'])['date'].rank('min')
 
-            processed_df = processed_df.drop(['name', 'Year', 'Date'], axis='columns')
-            self.data = processed_df
+            self.data = self.data.merge(pitchers_df,
+                                        left_on=[f'{home_or_away}_pitcher', 'Y', f'{home_or_away}_pitcher_season_game'],
+                                        right_on=['name', 'Year', f'season_game_offset{game_offset}'],
+                                        how='left')
+
+            cols_to_drop = ['name', 'Year', 'Date', f'season_game_offset{game_offset}',
+                            f'{home_or_away}_pitcher_season_game', 'season_game']
+            self.data = self.data.drop(cols_to_drop, axis='columns')
             all_cols = list(self.data.columns)
             all_cols[-len(cols):] = [f'pitcher_{home_or_away}_{c}_offset{np.abs(game_offset)}game' for c in all_cols[-len(cols):]]
             self.data.columns = all_cols
