@@ -18,7 +18,7 @@ class Files:
     # Team-level general data (attendance, W-L, etc)
     teams = base_dir / Path('team_stats.csv')
     # Game-level pitcher stats
-    pitchers_games = base_dir / Path('pitchers_games.csv')
+    pitchers_games = base_dir / Path('starting_pitchers_games.csv')
 
 
 class AggFcns:
