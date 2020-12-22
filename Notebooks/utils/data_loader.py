@@ -161,20 +161,36 @@ class Dataset:
             pitchers_df = pitchers_df[['name', 'Date', 'Year'] + cols]
 
             pitchers_df['season_game'] = pitchers_df.groupby(['name', 'Year'])['Date'].rank('min')
-            pitchers_df[f'season_game_offset{game_offset}'] = pitchers_df['season_game'] + game_offset
+            # Create a column which is just the game number offset by game_offset.
+            # This is simply make the join later on easier.
+            for i in range(1, game_offset + 1):
+                pitchers_df[f'season_game_offset{i}'] = pitchers_df['season_game'] + i
             self.data[f'{home_or_away}_pitcher_season_game'] = self.data.groupby([f'{home_or_away}_pitcher', 'Y'])['date'].rank('min')
 
-            self.data = self.data.merge(pitchers_df,
-                                        left_on=[f'{home_or_away}_pitcher', 'Y', f'{home_or_away}_pitcher_season_game'],
-                                        right_on=['name', 'Year', f'season_game_offset{game_offset}'],
-                                        how='left')
+            # Merge the non-pitchers data and the pitchers data by matching up to the past game
+            for i in range(1, game_offset + 1):
+                self.data = self.data.merge(pitchers_df,
+                                  left_on=[f'{home_or_away}_pitcher', 'Y', f'{home_or_away}_pitcher_season_game'],
+                                  right_on=['name', 'Year', f'season_game_offset{i}'],
+                                  how='left',
+                                  suffixes=('', f'_{i}'))
+                cols_to_drop = [f'{c}_{i}' for c in self.data.columns if c not in cols]
+                cols_to_drop = list(set(self.data.columns).intersection(set(cols_to_drop)))
+                self.data = self.data.drop(cols_to_drop, axis='columns')
 
-            cols_to_drop = ['name', 'Year', 'Date', f'season_game_offset{game_offset}',
-                            f'{home_or_away}_pitcher_season_game', 'season_game']
+            cols_to_drop = ['name', 'Year', 'Date', 'season_game']
+            cols_to_drop += [f'season_game_offset{i}' for i in range(1, game_offset + 1)]
+            #     cols_to_drop = [f'{c}_x' for c in cols_to_drop]
+            cols_to_drop += [f'season_game_offset{i}' for i in range(1, game_offset + 1)]
+            cols_to_drop += ['season_game']
+            cols_to_drop = list(set(self.data.columns).intersection(set(cols_to_drop)))
             self.data = self.data.drop(cols_to_drop, axis='columns')
-            all_cols = list(self.data.columns)
-            all_cols[-len(cols):] = [f'pitcher_{home_or_away}_{c}_offset{np.abs(game_offset)}game' for c in all_cols[-len(cols):]]
-            self.data.columns = all_cols
+            if game_offset > 1:
+                for c in cols:
+                    c_cols = [col for col in self.data.columns if col.startswith(c)]
+                    self.data[f'{home_or_away}_pitcher_{c}_avg_{game_offset}games'] = self.data[c_cols].mean(axis=1)
+                    self.data = self.data.drop(c_cols, axis='columns')
+
             self.data = optimize(self.data)
 
         merge_right('home')
