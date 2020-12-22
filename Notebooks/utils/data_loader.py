@@ -180,7 +180,6 @@ class Dataset:
 
             cols_to_drop = ['name', 'Year', 'Date', 'season_game']
             cols_to_drop += [f'season_game_offset{i}' for i in range(1, game_offset + 1)]
-            #     cols_to_drop = [f'{c}_x' for c in cols_to_drop]
             cols_to_drop += [f'season_game_offset{i}' for i in range(1, game_offset + 1)]
             cols_to_drop += ['season_game']
             cols_to_drop = list(set(self.data.columns).intersection(set(cols_to_drop)))
