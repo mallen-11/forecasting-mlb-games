@@ -92,7 +92,7 @@ def uniform_name(x):
                  'orioles':'BAL', 'baltimoreorioles':'BAL', 'bal':'BAL', 
                  'rockies':'COL', 'coloradorockies':'COL', 'col':'COL', 
                  'cubs':'CHN', 'chc':'CHN', 'chicagocubs':'CHN', 'chn':'CHN', 
-                 'marlins':'MIA', 'fla':'MIA', 'floridamarlins':'MIA', 'miamimarlins':'MIA', 'mia':'MIA', 
+                 'marlins':'MIA', 'fla':'MIA', 'floridamarlins':'MIA', 'miamimarlins':'MIA', 'flo': 'MIA', 'mia':'MIA', 
                  'indians':'CLE', 'clevelandindians':'CLE', 'cle':'CLE', 
                  'reds':'CIN', 'cincinnatireds':'CIN', 'cin':'CIN', 
                  'rangers':'TEX', 'texasrangers':'TEX', 'tex':'TEX', 
